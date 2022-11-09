@@ -4,9 +4,143 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Spectral:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <title>Pokedex</title>
 </head>
 <body>
+  <main class="main">
+    <!-- header -->
+    <header class="header-container container">
+      <nav class="nav-container">
+        <img src="./assets/pokemon_logo.svg" alt="pokemon-logo" class="nav__logo">
+        <form id="navSearch" class="nav__search">
+          <input type="text" class="search__input" placeholder="Pokémon">
+          <button type="button" id="buttonForm">🔍</button>
+        </form>
+      </nav>
+    </header>
+
+
+    <section class="pokemon-container container">
+      <div class="header__detail-pokemon">
+        <h2 class="detail-pokemon__title">charmilion</h2>
+        <picture>
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/5.svg" alt="charmilion">
+        </picture>
+      </div>
+    </section>
+
+
+    <!-- seccion de cards -->
+    <section class="section-pokemones container inactive">
+      <div class="card-scroll-container">
+        <article class="card">
+          <div class="card__left">
+            <div class="card-left__button-specie">
+              <button class="button">grass</button>
+              <button class="button">poison</button>
+            </div>
+            <picture class="card-img-container">
+              <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur">
+            </picture>
+            <h3 class="left__name">bulbasaur</h3>
+          </div>
+          <div class="card__right">
+            <h3 class="card-right__title">About</h3>
+            <p class="card-right__description">A strange seed was planted on its back at birth.,the plant sprouts and grows with this pokémon.</p>
+            <button type="button" class="card-right__button">See more</button>
+          </div>
+          
+        </article>
+
+
+        <article class="card">
+          <div class="card__left">
+            <div class="card-left__button-specie">
+              <button class="button">grass</button>
+              <button class="button">poison</button>
+            </div>
+            <picture class="card-img-container">
+              <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur">
+            </picture>
+            <h3 class="left__name">bulbasaur</h3>
+          </div>
+          <div class="card__right">
+            <h3 class="card-right__title">About</h3>
+            <p class="card-right__description">A strange seed was planted on its back at birth.,the plant sprouts and grows with this pokémon.</p>
+            <button type="button" class="card-right__button">See more</button>
+          </div>
+          
+        </article>
+
+
+
+        <article class="card">
+          <div class="card__left">
+            <div class="card-left__button-specie">
+              <button class="button">grass</button>
+              <button class="button">poison</button>
+            </div>
+            <picture class="card-img-container">
+              <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur">
+            </picture>
+            <h3 class="left__name">bulbasaur</h3>
+          </div>
+          <div class="card__right">
+            <h3 class="card-right__title">About</h3>
+            <p class="card-right__description">A strange seed was planted on its back at birth.,the plant sprouts and grows with this pokémon.</p>
+            <button type="button" class="card-right__button">See more</button>
+          </div>
+        </article>
+
+
+        <article class="card">
+          <div class="card__left">
+            <div class="card-left__button-specie">
+              <button class="button">grass</button>
+              <button class="button">poison</button>
+            </div>
+            <picture class="card-img-container">
+              <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur">
+            </picture>
+            <h3 class="left__name">bulbasaur</h3>
+          </div>
+          <div class="card__right">
+            <h3 class="card-right__title">About</h3>
+            <p class="card-right__description">A strange seed was planted on its back at birth.,the plant sprouts and grows with this pokémon.</p>
+            <button type="button" class="card-right__button">See more</button>
+          </div>
+          
+        </article>
+      </div>
+    </section>
+
+    <!-- secion de especies de pokemones -->
+    <section class="section-species container inactive">
+      <article class="species-container">
+        <h3>bug</h3>
+        <h3>plant</h3>
+        <h3>dragon</h3>
+        <h3>steel</h3>
+        <h3>water</h3>
+        <h3>rock</h3>
+        <h3>fire</h3>
+        <h3>bug</h3>
+        <h3>plant</h3>
+        <h3>dragon</h3>
+        <h3>steel</h3>
+        <h3>water</h3>
+        <h3>rock</h3>
+        <h3>plant</h3>
+        <h3>dragon</h3>
+        <h3>steel</h3>
+      </article>
+    </section>
+  </main>
+
   <script src="./src/main.js"></script>
 </body>
 </html>
