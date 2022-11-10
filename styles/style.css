@@ -98,12 +98,15 @@ body{
 }
 
 .nav__logo{
-  min-width: 320px;
+  min-width: 250px;
+  max-width: 350px;
   height: 80px;
   margin: 0 auto;
 }
 
-
+.nav__logo--descrition{
+  margin-right: 0;
+}
 .nav__search{
   min-width: 280px;
   height: 35px;
@@ -199,6 +202,7 @@ body{
   width:100%;
   height:100%;
   min-width: 240px;
+  max-width: 260px;
   min-height: 260px;
   display: grid;
   grid-template-columns: 1fr;
@@ -209,6 +213,11 @@ body{
   -webkit-box-shadow: 7px 7px 8px -2px rgba(0,0,0,0.71);
   -moz-box-shadow: 7px 7px 8px -2px rgba(0,0,0,0.71);
   overflow:hidden;
+}
+
+.card--specie{
+  height: 280px;
+  min-height: 280px;
 }
 
 .card__left{
@@ -353,8 +362,205 @@ body{
 }
 
 
+
+/* descripcion de pokemon */
+
+.section-description{
+  margin: 0 auto;
+  margin-top: 50px;
+  overflow: hidden;
+}
+
+.description__header{
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.header-descrition__species{
+  width:100%;
+  height: 40px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button-species{
+  width: max-content;
+  height: 100%;
+  padding: 8px;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color:var(--grass) ;
+  box-shadow: 7px 7px 8px -2px rgba(0,0,0,0.71);
+  -webkit-box-shadow: 7px 7px 8px -2px rgba(0,0,0,0.71);
+  -moz-box-shadow: 7px 7px 8px -2px rgba(0,0,0,0.71);
+}
+
+.header-description__title{
+  margin-top: 12px;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 2.3rem;
+  letter-spacing: 1px;
+}
+
+.header-description__paragraph{
+  width: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+}
+
+.features-container{
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.header-description__features{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.header-description__features:nth-child(1){
+  border-right: 2px solid black ;
+}
+
+.header-description__features:nth-child(2){
+  border-left: 2px solid black;
+}
+.header-description__features p:nth-child(1){
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.header-description__features p:nth-child(2){
+  font-weight: 400;
+}
+
+.header-description__stats{
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  font-weight: 700;
+  line-height: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats__title{
+  align-self: start;
+  margin-bottom: 20px;
+}
+
+.stats__list{
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.stat__item{
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat__item div{
+  width: 100%;
+  height:5px;
+  margin: auto;
+  border-radius: 5px;
+  background-color:rgba(0, 0, 0, 0.158);
+}
+
+.stat__item div span{
+  display: block;
+  width: 60%;
+  height: 100%;
+  border-radius: 5px;
+  background-color:#58bf2c;
+}
+
+#attack{
+  background-color:blue;
+}
+
+
+.description__evolutions{
+  width: 100%;
+  padding: 10px;
+}
+
+.evolution__title{
+  width: 85%;
+  height: 40px;
+  text-align: start;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  text-transform: capitalize;
+}
+
+.evolution-card-container{
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* specie detail */
+.section-spacie-detail{
+  width: 100%;
+}
+
+.specie-detail__title{
+  width:80%;
+  margin: 30px auto;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--blue-dark);
+  text-transform: capitalize;
+}
+
+.specie-detail{
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
 /* inactivo */
 
-/* .inactive{
+.inactive{
   display: none;
-} */
+}
