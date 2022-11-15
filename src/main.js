@@ -35,8 +35,8 @@ async function getListTypePokemon(){
 
 
 //funcion para añadir una imagen aleator ia a nuestra pantalla principal
-async function getRadomPokemon(){
-  const idRandom = Math.floor(Math.random() * 649).toString();
+async function getRadomPokemon(name){
+  const idRandom = name || Math.floor(Math.random() * 649).toString();
   const { data } = await api('pokemon/'+idRandom);
   const imgPokemon = data.sprites.other.dream_world.front_default;
   const pokemonName = data.name;
@@ -52,23 +52,28 @@ async function getRadomPokemon(){
 
 async function setListType(){
   const types =await getListTypePokemon();
+  speciesContainer.innerHTML = '';
   // console.log(types)
   types.map(item =>{
     const titleType = document.createElement('h3');
     titleType.innerText = item.type;
+    titleType.addEventListener('click',()=>{
+      location.hash = '#type=' + item.type;
+    });
     speciesContainer.appendChild(titleType);
   })
 }
 
 async function setCardPokemon(){
   const pokemonList = await getNamePokemon();
+  cardScrollContainer.innerHTML = '';
 
   pokemonList.forEach(async (pokemon) => {
     const { data } =await api('pokemon/' + pokemon.name);
     const name = data.name;
     const imgUrl = data.sprites.other.dream_world.front_default;
     const types = data.types.map(item=>item.type.name);
-    console.log(types)
+    // console.log(types)
     const article = document.createElement('article');
     article.classList.add('card');
     const cardLeft = document.createElement('div');
@@ -81,6 +86,9 @@ async function setCardPokemon(){
       buttonType.classList.add('button');
       buttonType.setAttribute('type', 'button');
       buttonType.innerText = item;
+      buttonType.addEventListener('click',()=>{
+        location.hash = '#type=' + item;
+      })
       buttonLeftSpecie.appendChild(buttonType);
     })
 
@@ -90,6 +98,9 @@ async function setCardPokemon(){
     imgPokemon.setAttribute('src', imgUrl);
     imgPokemon.setAttribute('alt', name);
     imgPokemon.classList.add('img-pokemon');
+    imgPokemon.addEventListener('click',()=>{
+      location.hash = '#detail=' + name;
+    })
     const leftName = document.createElement('h3');
     leftName.classList.add('left__name');
     leftName.innerText = name;
@@ -99,6 +110,9 @@ async function setCardPokemon(){
     buttonRight.setAttribute('type', 'button');
     buttonRight.classList.add('card-right__button');
     buttonRight.innerText='See more';
+    buttonRight.addEventListener('click',()=>{
+      location.hash = '#detail=' + name;
+    })
 
     cardImgContainer.appendChild(imgPokemon);
     cardLeft.appendChild(buttonLeftSpecie);
@@ -113,7 +127,66 @@ async function setCardPokemon(){
 }
 
 
-// getDeatilPokemon();
-getRadomPokemon();
-setListType();
-setCardPokemon();
+//funcion para obtener los detalles de un pokemon
+async function getPokemonDetailByName(name){
+  getRadomPokemon(name);
+  const { data } =await api('pokemon/'+name);
+  const typesPokemon = data.types;
+  headerDesriptionSpecies.innerHTML = '';
+  typesPokemon.map(pokemon =>{
+    const buttonType = document.createElement('button');
+    buttonType.setAttribute('type', 'button');
+    buttonType.classList.add('button-species');
+    buttonType.innerText = pokemon.type.name;
+    headerDesriptionSpecies.appendChild(buttonType);
+  });
+
+  const pokemonHeight = data.height*1/10;
+  const pokemonWeight = data.weight*1/10;
+  // console.log(pokemonHeight, pokemonWeight)
+  height.innerText= pokemonHeight + ' mts.';
+  weight.innerHTML= pokemonWeight + ' kg.';
+
+  statsList.innerHTML='';
+  const stats = data.stats;
+  stats.map(statI =>{
+    const statItem= document.createElement('div');
+    statItem.classList.add('stat__item');
+
+    const title = document.createElement('span');
+    switch (statI.stat.name){
+      case 'hp':
+        title.innerText = 'hp';
+        break;
+      case 'attack':
+        title.innerText = 'at';
+        break;
+      case 'defense':
+        title.innerText = 'df';
+        break;
+      case 'special-attack':
+        title.innerText = 'sa';
+        break;
+      case 'special-defense':
+        title.innerText = 'sd';
+        break;
+      case 'speed':
+        title.innerText = 'sp';
+    }
+
+    const content = document.createElement('span');
+    content.innerText = statI.base_stat;
+
+    const progressContainer = document.createElement('div');
+    const statLine = document.createElement('span');
+    statLine.classList.add('stat-line');
+    statLine.style.width = statI.base_stat+'%';
+
+    progressContainer.appendChild(statLine);
+    statItem.appendChild(title);
+    statItem.appendChild(content);
+    statItem.appendChild(progressContainer);
+    statsList.appendChild(statItem)
+  });
+  console.log(stats);
+}

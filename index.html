@@ -18,7 +18,7 @@
         <div class="nav__button-back inactive">
           <img src="./assets/arrow-back.svg" alt="arrow-back">
         </div>
-        <img src="./assets/pokemon_logo.svg" alt="pokemon-logo" class="nav__logo">
+        <img id="navLogo" src="./assets/pokemon_logo.svg" alt="pokemon-logo" class="nav__logo">
         <form id="navSearch" class="nav__search">
           <input type="text" class="search__input" placeholder="Pokémon">
           <button type="button" id="buttonForm">🔍</button>
@@ -38,7 +38,7 @@
 
 
     <!-- seccion de cards -->
-    <section class="section-pokemones container">
+    <section id="sectionPokemonesScroll" class="section-pokemones container">
       <div id="cardScrollContainer" class="card-scroll-container">
         <!-- <article class="card">
           <div class="card__left">
@@ -56,125 +56,64 @@
             <p class="card-right__description">A strange seed was planted on its back at birth.,the plant sprouts and grows with this pokémon.</p>
             <button type="button" class="card-right__button">See more</button>
           </div>
-          
-        </article>
-
-
-        <article class="card">
-          <div class="card__left">
-            <div class="card-left__button-specie">
-              <button class="button">grass</button>
-              <button class="button">poison</button>
-            </div>
-            <picture class="card-img-container">
-              <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur">
-            </picture>
-            <h3 class="left__name">bulbasaur</h3>
-          </div>
-          <div class="card__right">
-            <h3 class="card-right__title">About</h3>
-            <p class="card-right__description">A strange seed was planted on its back at birth.,the plant sprouts and grows with this pokémon.</p>
-            <button type="button" class="card-right__button">See more</button>
-          </div>
-          
-        </article>
-
-
-
-        <article class="card">
-          <div class="card__left">
-            <div class="card-left__button-specie">
-              <button class="button">grass</button>
-              <button class="button">poison</button>
-            </div>
-            <picture class="card-img-container">
-              <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur">
-            </picture>
-            <h3 class="left__name">bulbasaur</h3>
-          </div>
-          <div class="card__right">
-            <h3 class="card-right__title">About</h3>
-            <p class="card-right__description">A strange seed was planted on its back at birth.,the plant sprouts and grows with this pokémon.</p>
-            <button type="button" class="card-right__button">See more</button>
-          </div>
-        </article>
-
-
-        <article class="card">
-          <div class="card__left">
-            <div class="card-left__button-specie">
-              <button class="button">grass</button>
-              <button class="button">poison</button>
-            </div>
-            <picture class="card-img-container">
-              <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur">
-            </picture>
-            <h3 class="left__name">bulbasaur</h3>
-          </div>
-          <div class="card__right">
-            <h3 class="card-right__title">About</h3>
-            <p class="card-right__description">A strange seed was planted on its back at birth.,the plant sprouts and grows with this pokémon.</p>
-            <button type="button" class="card-right__button">See more</button>
-          </div>
-          
         </article> -->
       </div>
     </section>
 
     <!-- seccion de descripcion de pokemon -->
 
-    <section class="section-description container inactive">
+    <section id="sectionDetail" class="section-description container inactive">
       <article class="description__header">
-        <div class="header-descrition__species">
-          <button type="button" class="button-species">grass</button>
-          <button type="button" class="button-species">poison</button>
+        <div id="headerDesriptionSpecies" class="header-descrition__species">
+          <!-- <button type="button" class="button-species">grass</button>
+          <button type="button" class="button-species">poison</button> -->
         </div>
-        <h3 class="header-description__title">abaout</h3>
-        <p class="header-description__paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem sint asperiores provident, soluta non dolor repudiandae sapiente culpa.</p>
+        <!-- <h3 class="header-description__title">abaout</h3>
+        <p class="header-description__paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem sint asperiores provident, soluta non dolor repudiandae sapiente culpa.</p> -->
         <div class="features-container">
           <div class="header-description__features">
             <p>height</p>
-            <p>0.75 mts</p>
+            <p id="height"></p>
           </div>
           <div class="header-description__features">
             <p>weight</p>
-            <p>0.5 kg</p>
+            <p id="weight"></p>
           </div>
         </div>
 
         <div class="header-description__stats">
           <h3 class="stats__title">base stats</h3>
-          <div class="stats__list">
-            <div class="stat__item">
+          <div id="statsList" class="stats__list">
+            <!-- <div class="stat__item">
               <span>HP</span>
               <span>44</span>
-              <div><span id="hp"></span></div>
+              <div><span id="hp" class="stat-line"></span></div>
             </div>
             <div class="stat__item">
               <span>AT</span>
               <span>80</span>
-              <div><span id="attack"></span></div>
+              <div><span id="attack" class="stat-line"></span></div>
             </div>
             <div class="stat__item">
               <span>DF</span>
               <span>60</span>
-              <div><span id="defense"></span></div>
+              <div><span id="defense" class="stat-line"></span></div>
             </div>
             <div class="stat__item">
               <span>SA</span>
               <span>75</span>
-              <div><span id="special-attack"></span></div>
+              <div><span id="special-attack" class="stat-line"></span></div>
             </div>
             <div class="stat__item">
               <span>SD</span>
               <span>75</span>
-              <div><span id="special-defense"></span></div>
+              <div><span id="special-defense" class="stat-line"></span></div>
             </div>
             <div class="stat__item">
               <span>SP</span>
               <span>75</span>
-              <div><span id="speed"></span></div>
-            </div>
+              <div><span id="speed" class="stat-line"></span></div>
+            </div> -->
           </div>
         </div>
       </article>
@@ -240,7 +179,7 @@
 
 
     <!-- Seccion de  detalle especie -->
-    <section class="section-spacie-detail container inactive">
+    <section id="typeDetail" class="section-spacie-detail container">
       <h2 class="specie-detail__title">Water</h2>
       <div class="specie-detail">
         <article class="card card--specie">
@@ -319,5 +258,6 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./src/nodos.js"></script>
   <script src="./src/main.js"></script>
+  <script src="./src/routing.js"></script>
 </body>
 </html>
