@@ -22,6 +22,7 @@ const sectionDetail = document.querySelector('#sectionDetail');
 const typeDetail = document.querySelector('#typeDetail');
 const sectionSpecies = document.querySelector('#sectionSpecies');
 const statsList = document.querySelector('#statsList');
+const evolutionCardContainer =document.querySelector('#evolutionCardContainer');
 
 //nodos species
 const speciesContainer = document.querySelector('#speciesContainer');

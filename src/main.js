@@ -15,6 +15,7 @@ async function getNamePokemon(){
   const namesPokemon = pokemones.map(pokemon => {
     return {
       name: pokemon.name, 
+      id : pokemon.url.split('/')[6],
       }
     });
   return namesPokemon;
@@ -32,6 +33,7 @@ async function getListTypePokemon(){
     });
   return types;
 }
+
 
 
 //funcion para añadir una imagen aleator ia a nuestra pantalla principal
@@ -64,11 +66,11 @@ async function setListType(){
   })
 }
 
-async function setCardPokemon(){
-  const pokemonList = await getNamePokemon();
-  cardScrollContainer.innerHTML = '';
+async function createPokemonCard(list, container){
+  console.log(list)
+  container.innerHTML = '';
 
-  pokemonList.forEach(async (pokemon) => {
+  list.forEach(async (pokemon) => {
     const { data } =await api('pokemon/' + pokemon.name);
     const name = data.name;
     const imgUrl = data.sprites.other.dream_world.front_default;
@@ -122,8 +124,32 @@ async function setCardPokemon(){
 
     article.appendChild(cardLeft);
     article.appendChild(cardRight);
-    cardScrollContainer.appendChild(article);
+    container.appendChild(article);
   });
+}
+
+async function setCardPokemon(){
+  const pokemonList = await getNamePokemon();
+  
+  createPokemonCard(pokemonList, cardScrollContainer);
+}
+
+async function getEvolutionsByName(name){
+  const { data } = await api('pokemon-species/'+ name);
+  const id = data.evolution_chain.url.split('/')[6];
+
+  const { data: evolutions } = await api('evolution-chain/'+id);
+  const evolution = evolutions.chain;
+  const evolutionList =await [evolution.species];
+  console.log(evolution.evolves_to);
+  if(evolution.evolves_to[0]){
+    evolutionList.push(evolution.evolves_to[0].species);
+  }
+  if(evolution.evolves_to[0].evolves_to[0]){
+    evolutionList.push(evolution.evolves_to[0].evolves_to[0].species);
+  }
+  
+  return evolutionList;
 }
 
 
@@ -137,6 +163,7 @@ async function getPokemonDetailByName(name){
     const buttonType = document.createElement('button');
     buttonType.setAttribute('type', 'button');
     buttonType.classList.add('button-species');
+    buttonType.style.backgroundColor = `var(--${pokemon.type.name})`;
     buttonType.innerText = pokemon.type.name;
     headerDesriptionSpecies.appendChild(buttonType);
   });
@@ -156,22 +183,22 @@ async function getPokemonDetailByName(name){
     const title = document.createElement('span');
     switch (statI.stat.name){
       case 'hp':
-        title.innerText = 'hp';
+        title.innerText = 'HP';
         break;
       case 'attack':
-        title.innerText = 'at';
+        title.innerText = 'AT';
         break;
       case 'defense':
-        title.innerText = 'df';
+        title.innerText = 'DF';
         break;
       case 'special-attack':
-        title.innerText = 'sa';
+        title.innerText = 'SA';
         break;
       case 'special-defense':
-        title.innerText = 'sd';
+        title.innerText = 'SD';
         break;
       case 'speed':
-        title.innerText = 'sp';
+        title.innerText = 'SP';
     }
 
     const content = document.createElement('span');
@@ -180,7 +207,7 @@ async function getPokemonDetailByName(name){
     const progressContainer = document.createElement('div');
     const statLine = document.createElement('span');
     statLine.classList.add('stat-line');
-    statLine.style.width = statI.base_stat+'%';
+    statLine.style.width = statI.base_stat/2+'%';
 
     progressContainer.appendChild(statLine);
     statItem.appendChild(title);
@@ -189,4 +216,7 @@ async function getPokemonDetailByName(name){
     statsList.appendChild(statItem)
   });
   console.log(stats);
+  const evolutionsPokemon = await getEvolutionsByName(name);
+  createPokemonCard(evolutionsPokemon, evolutionCardContainer);
 }
+
