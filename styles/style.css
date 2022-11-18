@@ -28,6 +28,7 @@
   --yellow-dark: #fbb906;
   --yellow-medium: #fddc45;
   --yellow-light: #ffff83;
+  --loading: rgba(202, 230, 230, 0.7);
 
   --font1: 'Spectral', serif;
   --font2: 'Roboto Slab', serif;
@@ -183,6 +184,9 @@ body{
   max-width: 260px;
   transition: all 0.4s ease;
 }
+
+
+
 .header__detail-pokemon picture img:hover{
   transform: scale(1.1);
 }
@@ -225,9 +229,19 @@ body{
   overflow:hidden;
 }
 
+.card--loading{
+  background-color: var(--loading);
+  animation: eskeleton-loading infinite 1.5s;
+}
+
 .card--specie{
   height: 280px;
   min-height: 280px;
+}
+
+.card-specie--loading{
+  background-color: var(--loading);
+  animation: eskeleton-loading infinite 1.5;
 }
 
 .card__left{
@@ -371,6 +385,13 @@ body{
   cursor: pointer;
 }
 
+.species-container .type-loading{
+  width: 80px;
+  height: 40px;
+  background-color: var(--loading);
+  animation: eskeleton-loading infinite 1.5s;
+}
+
 .species-container h3:hover{
   box-shadow: 7px 7px 8px -2px rgba(0,0,0,0.71);
   -webkit-box-shadow: 7px 7px 8px -2px rgba(0,0,0,0.71);
@@ -421,6 +442,12 @@ body{
   box-shadow: 7px 7px 8px -2px rgba(0,0,0,0.71);
   -webkit-box-shadow: 7px 7px 8px -2px rgba(0,0,0,0.71);
   -moz-box-shadow: 7px 7px 8px -2px rgba(0,0,0,0.71);
+}
+
+.button-species--loading{
+  width: 90px;
+  background-color: var(--loading);
+  animation: eskeleton-loading infinite 1.5s;
 }
 
 .header-description__title{
@@ -519,6 +546,11 @@ body{
   background-color:rgba(0, 0, 0, 0.158);
 }
 
+.stat__item--loading{
+  background-color: var(--loading);
+  animation: eskeleton-loading infinite 1.5s;
+}
+
 .stat-line{
   display: block;
   width: 60%;
@@ -582,8 +614,17 @@ body{
   gap: 20px;
 }
 
-/* inactivo */
+/* keyframes */
+@keyframes eskeleton-loading {
+  0%, 100%{
+    opacity: 100%;
+  }
+  50%{
+    opacity: 5%;
+  }
+}
 
+/* inactivo */
 .inactive{
   display: none;
 }

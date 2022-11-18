@@ -7,6 +7,7 @@ const navSearch = document.querySelector('#navSearch');
 const headerPokemonName = document.querySelector('#headerPokemonName')
 const imgHeader = document.querySelector('#imgHeader');
 const navLogo =document.querySelector('#navLogo');
+const inputSearch = document.querySelector('.search__input');
 const buttonForm = document.querySelector('#buttonForm');
 const headerDesriptionSpecies = document.querySelector('#headerDesriptionSpecies');
 

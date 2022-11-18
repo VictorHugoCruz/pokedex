@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', rout, false);
 window.addEventListener('hashchange', rout, false);
 buttonForm.addEventListener('click',()=>{
-  location.hash = '#search=';
+  location.hash = '#search='+ inputSearch.value;
 });
 
 arrowBack.addEventListener('click', ()=>{
@@ -68,6 +68,11 @@ function search(){
   sectionDetail.classList.remove('inactive');
   typeDetail.classList.add('inactive');
   sectionSpecies.classList.add('inactive');
+  const [_, name] = location.hash.split('=');
+  if(!name){
+    name = '';
+  }
+  getPokemonDetailByName(name);
 }
 
 function type(){

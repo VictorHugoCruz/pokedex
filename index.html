@@ -20,18 +20,18 @@
         </div>
         <img id="navLogo" src="./assets/pokemon_logo.svg" alt="pokemon-logo" class="nav__logo">
         <form id="navSearch" class="nav__search">
-          <input type="text" class="search__input" placeholder="Pokémon">
+          <input type="text" class="search__input" placeholder="Pokémon or ID">
           <button type="button" id="buttonForm">🔍</button>
         </form>
       </nav>
     </header>
 
 
-    <section id="pokemonContainer" class="pokemon-container container">
+    <section id="pokemonContainer" class="pokemon-container container ">
       <div id="headerPokemon" class="header__detail-pokemon">
         <h2 id="headerPokemonName" class="detail-pokemon__title"></h2>
         <picture>
-          <img id="imgHeader">
+            <img id="imgHeader">
         </picture>
       </div>
     </section>
@@ -40,6 +40,9 @@
     <!-- seccion de cards -->
     <section id="sectionPokemonesScroll" class="section-pokemones container">
       <div id="cardScrollContainer" class="card-scroll-container">
+        <article class="card card--loading"></article>
+        <article class="card card--loading"></article>
+        <article class="card card--loading"></article>
         <!-- <article class="card">
           <div class="card__left">
             <div class="card-left__button-specie">
@@ -65,8 +68,8 @@
     <section id="sectionDetail" class="section-description container inactive">
       <article class="description__header">
         <div id="headerDesriptionSpecies" class="header-descrition__species">
-          <!-- <button type="button" class="button-species">grass</button>
-          <button type="button" class="button-species">poison</button> -->
+          <button type="button" class="button-species button-species--loading"></button>
+          <button type="button" class="button-species button-species--loading"></button>
         </div>
         <!-- <h3 class="header-description__title">abaout</h3>
         <p class="header-description__paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem sint asperiores provident, soluta non dolor repudiandae sapiente culpa.</p> -->
@@ -84,36 +87,36 @@
         <div class="header-description__stats">
           <h3 class="stats__title">base stats</h3>
           <div id="statsList" class="stats__list">
-            <!-- <div class="stat__item">
-              <span>HP</span>
+            <div class="stat__item">
+              <!-- <span>HP</span>
               <span>44</span>
-              <div><span id="hp" class="stat-line"></span></div>
+              <div><span id="hp" class="stat-line"></span></div> -->
             </div>
-            <div class="stat__item">
-              <span>AT</span>
+            <div class="stat__item stat__item--loading">
+              <!-- <span>AT</span>
               <span>80</span>
-              <div><span id="attack" class="stat-line"></span></div>
+              <div><span id="attack" class="stat-line"></span></div> -->
             </div>
-            <div class="stat__item">
-              <span>DF</span>
+            <div class="stat__item stat__item--loading">
+              <!-- <span>DF</span>
               <span>60</span>
-              <div><span id="defense" class="stat-line"></span></div>
+              <div><span id="defense" class="stat-line"></span></div> -->
             </div>
-            <div class="stat__item">
-              <span>SA</span>
+            <div class="stat__item stat__item--loading">
+              <!-- <span>SA</span>
               <span>75</span>
-              <div><span id="special-attack" class="stat-line"></span></div>
+              <div><span id="special-attack" class="stat-line"></span></div> -->
             </div>
-            <div class="stat__item">
-              <span>SD</span>
+            <div class="stat__item stat__item--loading">
+              <!-- <span>SD</span>
               <span>75</span>
-              <div><span id="special-defense" class="stat-line"></span></div>
+              <div><span id="special-defense" class="stat-line"></span></div> -->
             </div>
-            <div class="stat__item">
-              <span>SP</span>
+            <div class="stat__item stat__item--loading">
+              <!-- <span>SP</span>
               <span>75</span>
-              <div><span id="speed" class="stat-line"></span></div>
-            </div> -->
+              <div><span id="speed" class="stat-line"></span></div> -->
+            </div>
           </div>
         </div>
       </article>
@@ -121,6 +124,9 @@
       <article class="description__evolutions">
         <h2 class="evolution__title">evolutions</h2>
         <div id="evolutionCardContainer" class="evolution-card-container">
+          <article class="card card--loading"></article>
+          <article class="card card--loading"></article>
+          <article class="card card--loading"></article>
           <!-- <article class="card">
             <div class="card__left">
               <div class="card-left__button-specie">
@@ -182,8 +188,8 @@
     <section id="typeDetail" class="section-spacie-detail container">
       <h2 class="specie-detail__title">Water</h2>
       <div class="specie-detail">
-        <article class="card card--specie">
-          <div class="card__left">
+        <article class="card card--specie card-specie--loading">
+          <!-- <div class="card__left">
             <div class="card-left__button-specie">
               <button class="button">grass</button>
               <button class="button">poison</button>
@@ -192,65 +198,49 @@
               <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur">
             </picture>
             <h3 class="left__name">bulbasaur</h3>
-          </div>
+          </div> -->
         </article>
 
-        <article class="card card--specie">
-          <div class="card__left">
-            <div class="card-left__button-specie">
-              <button class="button">grass</button>
-              <button class="button">poison</button>
-            </div>
-            <picture class="card-img-container">
-              <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur">
-            </picture>
-            <h3 class="left__name">bulbasaur</h3>
-          </div>
+        <article class="card card--specie card-specie--loading">
         </article>
 
-        <article class="card card--specie">
-          <div class="card__left">
-            <div class="card-left__button-specie">
-              <button class="button">grass</button>
-              <button class="button">poison</button>
-            </div>
-            <picture class="card-img-container">
-              <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur">
-            </picture>
-            <h3 class="left__name">bulbasaur</h3>
-          </div>
+        <article class="card card--specie card-specie--loading">
         </article>
 
-        <article class="card card--specie">
-          <div class="card__left">
-            <div class="card-left__button-specie">
-              <button class="button">grass</button>
-              <button class="button">poison</button>
-            </div>
-            <picture class="card-img-container">
-              <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur">
-            </picture>
-            <h3 class="left__name">bulbasaur</h3>
-          </div>
+        <article class="card card--specie card-specie--loading">
         </article>
 
-        <article class="card card--specie">
-          <div class="card__left">
-            <div class="card-left__button-specie">
-              <button class="button">grass</button>
-              <button class="button">poison</button>
-            </div>
-            <picture class="card-img-container">
-              <img class="img-pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur">
-            </picture>
-            <h3 class="left__name">bulbasaur</h3>
-          </div>
+        <article class="card card--specie card-specie--loading">
+        </article>
+
+        <article class="card card--specie card-specie--loading">
+        </article>
+
+        <article class="card card--specie card-specie--loading">
+        </article>
+
+        <article class="card card--specie card-specie--loading">
+        </article>
+
+        <article class="card card--specie card-specie--loading">
         </article>
       </div>
     </section>
     <!-- secion de especies de pokemones -->
     <section id="sectionSpecies" class="section-species container">
       <article id="speciesContainer" class="species-container">
+        <h3 class="type-loading"></h3>
+        <h3 class="type-loading"></h3>
+        <h3 class="type-loading"></h3>
+        <h3 class="type-loading"></h3>
+        <h3 class="type-loading"></h3>
+        <h3 class="type-loading"></h3>
+        <h3 class="type-loading"></h3>
+        <h3 class="type-loading"></h3>
+        <h3 class="type-loading"></h3>
+        <h3 class="type-loading"></h3>
+        <h3 class="type-loading"></h3>
+        <h3 class="type-loading"></h3>
         <!-- <h3>bug</h3> -->
       </article>
     </section>
