@@ -23,12 +23,14 @@ async function getNamePokemon(){
 
 //funcion para obtener el tipo de pokemon
 async function getListTypePokemon(){
+
   const { data } = await api('type');
   const types = data.results
     .filter(typePokemon => typePokemon.name!='unknown')
     .map(typePokemon=>{
       return{
-        type: typePokemon.name
+        type: typePokemon.name,
+        id: typePokemon.url.split('/')[6],
       }
     });
   return types;
@@ -60,7 +62,7 @@ async function setListType(){
     const titleType = document.createElement('h3');
     titleType.innerText = item.type;
     titleType.addEventListener('click',()=>{
-      location.hash = '#type=' + item.type;
+      location.hash = '#type=' + item.type+'-'+item.id;
     });
     speciesContainer.appendChild(titleType);
   })
@@ -74,22 +76,27 @@ async function createPokemonCard(list, container){
     const { data } =await api('pokemon/' + pokemon.name);
     const name = data.name;
     const imgUrl = data.sprites.other.dream_world.front_default;
-    const types = data.types.map(item=>item.type.name);
-    // console.log(types)
+    const types = data.types.map(item=>{
+      return {
+        type: item.type.name,
+        id: item.type.url.split('/')[6]
+      }
+    });
+    // console.log({types});
     const article = document.createElement('article');
     article.classList.add('card');
     const cardLeft = document.createElement('div');
-    cardLeft.style.backgroundColor=`var(--${types[0]})`
     cardLeft.classList.add('card__left');
+    cardLeft.style.backgroundColor=`var(--${types[0].type})`
     const buttonLeftSpecie = document.createElement('div');
     buttonLeftSpecie.classList.add('card-left__button-specie');
     types.map(item =>{
       const buttonType = document.createElement('button');
       buttonType.classList.add('button');
       buttonType.setAttribute('type', 'button');
-      buttonType.innerText = item;
+      buttonType.innerText = item.type;
       buttonType.addEventListener('click',()=>{
-        location.hash = '#type=' + item;
+        location.hash = '#type=' + item.type + '-' + item.id;
       })
       buttonLeftSpecie.appendChild(buttonType);
     })
@@ -134,13 +141,70 @@ async function setCardPokemon(){
   createPokemonCard(pokemonList, cardScrollContainer);
 }
 
+
+async function createPokemonTypeCard(list, container){
+  container.innerHTML = '';
+
+  list.forEach(async (pokemon) => {
+    const { data } =await api('pokemon/' + pokemon.name);
+    const name = data.name;
+    const imgUrl = data.sprites.other.dream_world.front_default || data.sprites.front_default || data.sprites.back_default;
+    console.log(imgUrl);
+    const types = data.types.map(item=>{
+      return {
+        type: item.type.name,
+        id: item.type.url.split('/')[6]
+      }
+    });
+    // console.log({types});
+    const article = document.createElement('article');
+    article.classList.add('card');
+    article.classList.add('card--specie')
+    const cardLeft = document.createElement('div');
+    cardLeft.classList.add('card__left');
+    cardLeft.style.backgroundColor=`var(--${types[0].type})`
+    const buttonLeftSpecie = document.createElement('div');
+    buttonLeftSpecie.classList.add('card-left__button-specie');
+    types.map(item =>{
+      const buttonType = document.createElement('button');
+      buttonType.classList.add('button');
+      buttonType.setAttribute('type', 'button');
+      buttonType.innerText = item.type;
+      buttonType.addEventListener('click',()=>{
+        location.hash = '#type=' + item.type + '-' + item.id;
+      })
+      buttonLeftSpecie.appendChild(buttonType);
+    })
+
+    const cardImgContainer = document.createElement('picture');
+    cardImgContainer.classList.add('card-img-container');
+    const imgPokemon = document.createElement('img');
+    imgPokemon.setAttribute('src', imgUrl);
+    imgPokemon.setAttribute('alt', name);
+    imgPokemon.classList.add('img-pokemon');
+    imgPokemon.addEventListener('click',()=>{
+      location.hash = '#detail=' + name;
+    })
+    const leftName = document.createElement('h3');
+    leftName.classList.add('left__name');
+    leftName.innerText = name;
+
+    cardImgContainer.appendChild(imgPokemon);
+    cardLeft.appendChild(buttonLeftSpecie);
+    cardLeft.appendChild(cardImgContainer);
+    cardLeft.appendChild(leftName);
+    article.appendChild(cardLeft);
+    container.appendChild(article);
+  });
+}
+//funcion para obtener las evoluciones de los pokemon
 async function getEvolutionsByName(name){
   const { data } = await api('pokemon-species/'+ name);
   const id = data.evolution_chain.url.split('/')[6];
 
   const { data: evolutions } = await api('evolution-chain/'+id);
   const evolution = evolutions.chain;
-  const evolutionList =await [evolution.species];
+  const evolutionList =[evolution.species];
   console.log(evolution.evolves_to);
   if(evolution.evolves_to[0]){
     evolutionList.push(evolution.evolves_to[0].species);
@@ -163,6 +227,9 @@ async function getPokemonDetailByName(name){
     const buttonType = document.createElement('button');
     buttonType.setAttribute('type', 'button');
     buttonType.classList.add('button-species');
+    buttonType.addEventListener('click',()=>{
+      location.hash = '#type='+pokemon.type.name+'-'+pokemon.type.id;
+    })
     buttonType.style.backgroundColor = `var(--${pokemon.type.name})`;
     buttonType.innerText = pokemon.type.name;
     headerDesriptionSpecies.appendChild(buttonType);
@@ -218,5 +285,19 @@ async function getPokemonDetailByName(name){
   console.log(stats);
   const evolutionsPokemon = await getEvolutionsByName(name);
   createPokemonCard(evolutionsPokemon, evolutionCardContainer);
+}
+
+//funcion para crear pokemones por tipo de pokemon
+async function getPokemonsByType(typeId){
+  const { data } = await api('type/'+ typeId);
+  const nameType = data.name;
+  const listPokemon = data.pokemon.map(item =>{
+    return{
+      name: item.pokemon.name,
+      id : item.pokemon.url.split('/')[6],
+    }
+  })
+  specieDetailTitle.innerText = nameType;
+  createPokemonTypeCard(listPokemon, typeDetailArticle)
 }
 

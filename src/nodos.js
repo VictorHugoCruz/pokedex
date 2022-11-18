@@ -20,9 +20,11 @@ const weight = document.querySelector('#weight');
 const sectionPokemonesScroll = document.querySelector('#sectionPokemonesScroll');
 const sectionDetail = document.querySelector('#sectionDetail');
 const typeDetail = document.querySelector('#typeDetail');
+const typeDetailArticle = document.querySelector('#typeDetail .specie-detail');
 const sectionSpecies = document.querySelector('#sectionSpecies');
 const statsList = document.querySelector('#statsList');
 const evolutionCardContainer =document.querySelector('#evolutionCardContainer');
 
 //nodos species
 const speciesContainer = document.querySelector('#speciesContainer');
+const specieDetailTitle = document.querySelector('.specie-detail__title');

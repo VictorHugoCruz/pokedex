@@ -72,13 +72,19 @@ function search(){
 
 function type(){
   console.log('type')
+  const [name, id] = location.hash.split('=')[1].split('-');
+
   arrowBack.classList.remove('inactive');
   navSearch.classList.add('inactive');
   navLogo.classList.remove('inactive');
-  navLogo.classList.remove('nav__logo--descrition');
+  navLogo.classList.add('nav__logo--descrition');
   pokemonContainer.classList.add('inactive');
   sectionPokemonesScroll.classList.add('inactive');
   sectionDetail.classList.add('inactive');
   typeDetail.classList.remove('inactive');
   sectionSpecies.classList.remove('inactive');
+  headerContainer.style.backgroundColor = `var(--${name})`;
+  sectionSpecies.style.backgroundColor = `var(--${name})`;
+  console.log(id);
+  getPokemonsByType(id);
 }
